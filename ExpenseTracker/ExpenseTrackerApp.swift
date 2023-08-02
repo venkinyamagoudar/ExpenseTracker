@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct ExpenseTrackerApp: App {
+    @StateObject private var dataController = DataController()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ExpenseTabView()
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }
